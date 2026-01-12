@@ -1,0 +1,5 @@
+CLASS zbp_cmg_i_customers DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zcmg_i_customers.
+ENDCLASS.
+
+CLASS zbp_cmg_i_customers IMPLEMENTATION.
+ENDCLASS.

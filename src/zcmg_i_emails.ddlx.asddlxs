@@ -1,0 +1,40 @@
+@Metadata.layer:  #PARTNER
+@UI:{
+    headerInfo:{    typeName: 'Emails',
+                    typeNamePlural: 'Emails',
+                    title: { type: #STANDARD, label: 'Emails', value: 'EmailID' }
+            }
+    }
+@Search.searchable: true
+
+annotate view zcmg_i_emails 
+    with 
+{
+    @UI.facet: [{ id: 'Emails', purpose:#STANDARD, type: #IDENTIFICATION_REFERENCE, position: 10 }]
+//    @UI: { lineItem: [ { position: 10, label: 'E-Mail ID'} ], 
+    @UI: {identification: [ { position: 10, label: 'E-Mail ID'} ]}
+    @UI.adaptationHidden: true
+    EmailID;
+    @UI: { lineItem: [ { position: 20, label: 'Customer UUID'} ] }
+    @UI: {identification: [ { position: 20, label: 'Customer UUID'} ]}
+    CustomeruuID;
+    @UI: { lineItem: [ { position: 30, label: 'Ordinal Nr'} ], 
+    identification: [ { position: 30, label: 'Ordinal Nr'} ]}
+    @Search.defaultSearchElement: true
+    Ordinalnumber;
+    @UI: { lineItem: [ { position: 40, importance: #HIGH, label: 'Default E-Mail'} ], 
+    identification: [ { position: 40, importance: #HIGH, label: 'Default E-Mail'} ]}
+    @Search.defaultSearchElement: true
+     Isdefault;
+    @UI: { lineItem: [ { position: 50, label: 'E-Mail address'} ], 
+    identification: [ { position: 50, label: 'E-Mail address'} ]}
+    @Search.defaultSearchElement: true
+//    @Consumption.valueHelpDefinition: [{ entity:{ name: 'zcmg_i_emails' , element: 'emailaddress'  }, 
+//    additionalBinding: [ { localElement: 'Isdefault', element: 'Remark' } ]   
+//     }]
+    Emailaddress;
+    @UI: { lineItem: [ { position: 60, label: 'Remark'} ], 
+    identification: [ { position: 60, label: 'Remark'} ]}
+    Remark;
+    
+}

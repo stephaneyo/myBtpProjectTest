@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Customers'
+define service ZCMG_EXP_Customer {
+  expose zcmg_i_customers as Customers;
+  expose zcmg_i_emails    as Emails;
+}

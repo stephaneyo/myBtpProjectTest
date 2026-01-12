@@ -1,0 +1,57 @@
+managed implementation in class zbp_cmg_i_customers unique;
+strict ( 2 ) ;
+
+define behavior for zcmg_i_customers alias Customers
+persistent table zcmg_customers
+lock master
+authorization master ( instance )
+{
+  create(authorization : global);
+  update;
+  delete;
+
+  association _emails {create;}
+
+  field ( numbering : managed, readonly ) Id;
+
+  mapping for zcmg_customers
+  {
+        Id = customer_uuid;
+        AddressId = address_id;
+        Accountname = accountname;
+//        DefaultEmail = defaultemail;
+        LocalCreatedBy =  local_created_by;
+        LocalCreatedAt =local_created_at;
+        LocalLastChangedBy = local_last_changed_by;
+        LocalLastChangedAt = local_last_changed_at;
+        LastChangedAt = last_changed_at;
+  }
+}
+
+
+define behavior for zcmg_i_emails alias Emails
+persistent table zcmg_emails
+
+lock dependent by _customers
+authorization dependent by _customers
+//etag master <field_name>
+{
+
+  update;
+  delete;
+  association _customers;
+
+  field ( numbering : managed, readonly) EmailID;
+  field ( readonly ) CustomeruuID;
+
+  mapping for zcmg_i_emails
+  {
+    CustomeruuID = customeruuid;
+    Ordinalnumber = ordinalnumber;
+    Isdefault = isdefault ;
+    Emailaddress = emailaddress;
+    Remark = remark ;
+  }
+
+
+}

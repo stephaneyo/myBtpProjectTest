@@ -1,0 +1,45 @@
+@Metadata.layer:  #PARTNER
+@UI:{
+    headerInfo:{    typeName: 'Customers',
+                    typeNamePlural: 'Customers',
+                    title: { type: #STANDARD, label: 'Customers', value: 'Id' }
+            }
+    }
+annotate view zcmg_i_customers
+    with 
+{
+   @UI.facet:  [ 
+                    { id: 'Customers', purpose:#STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Customers', position: 10 },
+                    { id: 'Emails', purpose:#STANDARD, type: #LINEITEM_REFERENCE, label: 'Emails',  position: 20, targetElement: '_emails' } 
+                ]
+    @UI: { lineItem: [{ position: 10, label: 'Customer ID' }], 
+        identification: [ { position: 10, label: 'Customer ID'} ]}
+    Id;
+    @UI: { lineItem: [ { position: 20, label: 'Address ID'} ], 
+    identification: [ { position: 20, label: 'Address ID'} ]}
+    AddressId;
+    
+    @UI: { lineItem: [ { position: 30, label: 'Accountname'} ], 
+    identification: [ { position: 30, label: 'Accountname'} ]}
+    Accountname;
+//    @UI: { lineItem: [ { position: 40, label: 'Default E-Mail'} ], 
+//    identification: [ { position: 40, label: 'Default E-Mail'} ]}
+//    @Consumption.valueHelpDefinition: [{ entity:{ name: 'zcmg_i_emails' , element: 'emailaddress'  }
+//    , additionalBinding: [ { localElement: '_emails', element: 'Emailaddress' } ]   
+//     }]
+//    DefaultEmail;
+    @UI: { lineItem: [ { position: 50, label: 'Created by'} ], 
+    identification: [ { position: 50, label: 'Created by'} ]}
+    LocalCreatedBy;
+    @UI: { lineItem: [ { position: 60, label: 'Created at'} ], 
+    identification: [ { position: 60, label: 'Created at'} ]}
+    LocalCreatedAt;
+    @UI: { lineItem: [ { position: 70, label: 'Last changed by'} ], 
+    identification: [ { position: 70, label: 'Last changed by'} ]}
+    LocalLastChangedBy;
+    @UI: { lineItem: [ { position: 80, label: 'Last changed at'} ], 
+    identification: [ { position: 80, label: 'Last changed at'} ]}
+    LocalLastChangedAt;
+    
+    
+}
